@@ -18,6 +18,9 @@ export class Review {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
+  @Column({ default: false })
+  isApproved: boolean;
+
   @ManyToOne(() => Project, (project) => project.reviews)
   project: Project;
 }

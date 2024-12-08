@@ -1,5 +1,10 @@
-// src/projects/dto/create-project.dto.ts
-import { IsString, IsEnum, IsArray, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  IsEnum,
+  IsArray,
+  IsNotEmpty,
+  ArrayMaxSize,
+} from 'class-validator';
 
 export class CreateProjectDto {
   @IsString()
@@ -16,6 +21,7 @@ export class CreateProjectDto {
   previewImage: string;
 
   @IsArray()
+  @ArrayMaxSize(3, { message: 'Можно загрузить максимум 3 изображения.' })
   @IsString({ each: true })
   images: string[];
 }

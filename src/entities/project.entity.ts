@@ -18,7 +18,7 @@ export class Project {
   @Column()
   previewImage: string;
 
-  @Column('simple-array')
+  @Column('simple-array', { nullable: true })
   images: string[];
 
   @OneToMany(() => Review, (review) => review.project, { cascade: true })

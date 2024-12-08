@@ -1,4 +1,3 @@
-// src/faq/dto/create-faq.dto.ts
 import { IsString, IsNotEmpty } from 'class-validator';
 
 export class CreateFaqDto {

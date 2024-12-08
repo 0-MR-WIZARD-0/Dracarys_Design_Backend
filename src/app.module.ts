@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { FaqModule } from './modules/faq/faq.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -13,7 +15,13 @@ import { FaqModule } from './modules/faq/faq.module';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [
+        ConfigModule,
+        ServeStaticModule.forRoot({
+          rootPath: join(__dirname, '..', 'uploads'),
+          serveRoot: '/files',
+        }),
+      ],
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get('DB_HOST'),

@@ -33,7 +33,7 @@ export class ProjectsService {
     updateProjectDto: UpdateProjectDto,
   ): Promise<Project> {
     await this.projectsRepository.update(id, updateProjectDto);
-    return this.findOne(id); // возвращаем обновленный проект
+    return this.findOne(id);
   }
 
   async remove(id: number): Promise<void> {

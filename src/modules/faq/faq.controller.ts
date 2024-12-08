@@ -11,7 +11,6 @@ import {
 import { FaqService } from './faq.service';
 import { CreateFaqDto } from './dto/create-faq.dto';
 import { UpdateFaqDto } from './dto/update-faq.dto';
-
 import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 
 @Controller('faq')
