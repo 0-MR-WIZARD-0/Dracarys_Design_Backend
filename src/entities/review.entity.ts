@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Project } from './project.entity';
 
 @Entity({ name: 'reviews' })
@@ -21,6 +27,7 @@ export class Review {
   @Column({ default: false })
   isApproved: boolean;
 
-  @ManyToOne(() => Project, (project) => project.reviews)
+  @OneToOne(() => Project, (project) => project.review)
+  @JoinColumn()
   project: Project;
 }

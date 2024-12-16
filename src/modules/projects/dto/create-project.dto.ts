@@ -1,27 +1,21 @@
-import {
-  IsString,
-  IsEnum,
-  IsArray,
-  IsNotEmpty,
-  ArrayMaxSize,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateProjectDto {
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  @IsEnum(['customization', 'design', 'web-development'])
+  @IsString()
+  @IsNotEmpty()
   category: 'customization' | 'design' | 'web-development';
 
   @IsString()
+  @IsNotEmpty()
   description: string;
 
-  @IsString()
-  previewImage: string;
+  @IsOptional()
+  previewImage?: string;
 
-  @IsArray()
-  @ArrayMaxSize(3, { message: 'Можно загрузить максимум 3 изображения.' })
-  @IsString({ each: true })
-  images: string[];
+  @IsOptional()
+  images?: string[];
 }

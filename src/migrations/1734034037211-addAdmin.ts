@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-export class AddAdmin1733468406632 implements MigrationInterface {
+export class AddAdmin1734034037211 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const password = process.env.PASSWORD;
     const hashedPassword = await bcrypt.hash(password, 10);

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
 import { Review } from './review.entity';
 
 @Entity({ name: 'projects' })
@@ -21,6 +21,9 @@ export class Project {
   @Column('simple-array', { nullable: true })
   images: string[];
 
-  @OneToMany(() => Review, (review) => review.project, { cascade: true })
-  reviews: Review[];
+  @OneToOne(() => Review, (review) => review.project, {
+    cascade: true,
+    nullable: true,
+  })
+  review: Review;
 }

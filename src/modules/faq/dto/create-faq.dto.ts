@@ -6,5 +6,6 @@ export class CreateFaqDto {
   question: string;
 
   @IsString()
+  @IsNotEmpty()
   answer: string;
 }

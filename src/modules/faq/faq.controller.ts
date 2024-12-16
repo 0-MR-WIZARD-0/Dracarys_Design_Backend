@@ -2,11 +2,11 @@ import {
   Controller,
   Get,
   Post,
-  Put,
   Delete,
   Body,
   Param,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 import { FaqService } from './faq.service';
 import { CreateFaqDto } from './dto/create-faq.dto';
@@ -22,11 +22,6 @@ export class FaqController {
     return this.faqService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.faqService.findOne(id);
-  }
-
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createFaqDto: CreateFaqDto) {
@@ -34,7 +29,7 @@ export class FaqController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put(':id')
+  @Patch(':id')
   update(@Param('id') id: number, @Body() updateFaqDto: UpdateFaqDto) {
     return this.faqService.update(id, updateFaqDto);
   }
